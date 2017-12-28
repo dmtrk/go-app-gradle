@@ -1,0 +1,23 @@
+plugins {
+    //id 'java'
+}
+
+group "github.com/dmtrk/$name"
+version '1.0-SNAPSHOT'
+
+
+task clean(type: Delete) {
+    delete 'bin', 'pkg'
+    followSymlinks = false
+}
+
+task build(dependsOn: 'compile') {
+    //exec compile
+}
+
+task compile(type:Exec) {
+    //environment ('GOPATH': new File(projectDir,'src').getAbsolutePath())
+    environment ('GOPATH': projectDir.getAbsolutePath())
+    commandLine ('go','install',project.group)
+}
+
